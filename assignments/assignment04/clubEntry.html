@@ -51,7 +51,21 @@
 	let newClubDistances;
 	
 	function addClub() {
-        // your code here
+		newClubName = document.getElementById("clubName").value;
+		newClubAbrv = newClubName.slice(0,2);
+		let newClubStats = [0,newClubAbrv,newClubName,0,0,0,0,0,0,0];
+		
+		clubs.push(newClubStats);
+
+		clubs = JSON.stringify(clubs);
+		localStorage.setItem("clubs", clubs);
+
+		
+
+		if(clubs.length > 14)
+		{
+			alert("Warnign: you are only allowed to carry 14 clubs in your golf bag in match play competition.");
+		}
 	}
 	
 	// navigate to club distance LIST screen
