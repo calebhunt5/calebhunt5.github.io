@@ -94,7 +94,7 @@ function undoLastShot() {
         //gets String value of previous club distance 
 	let prevClubs = localStorage.getItem('clubsUndo');
 
-	//store previous clubs (prevClubs) as 'clubs' on local storage and reload the page to undo the change. 
+	//store previous clubs (prevClubs) as 'clubs' on local storage and reload the page to undo the change
 	localStorage.setItem('clubs', prevClubs.slice(0));
 	window.location.href = "clubDistanceList.html";
 }
