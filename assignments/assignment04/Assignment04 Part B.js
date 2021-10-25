@@ -179,8 +179,14 @@ let person = {
       firstInput.setAttribute("errorId", formArray[i].errorId);
 
       let tr = document.createElement("tr");
-      //tr.appendChild(formArray[i].label);
-      tr.appendChild(firstInput);
+      let td1 = document.createElement("td");
+      let td2 = document.createElement("td");
+      
+      td1.innerHTML = formArray[i].label;
+      td2.innerHTML = firstInput;
+      
+      tr.appendChild(td1);
+      tr.appendChild(td2);
       table00.appendChild(tr);
   }
 
