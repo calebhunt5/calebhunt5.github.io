@@ -168,16 +168,20 @@ let person = {
   table00.setAttribute("style", "border: 1px solid black;")
   table00.setAttribute("width", "100%")
 
-  for(let i = 0; i < formArray.length; i++)
+   for(let i = 0 ; i < formArray.length ; i++)
   {
-    let firstInput = document.createElement("input");
-    firstInput.label = formArray[i].label;
-    firstInput.type = formArray[i].inputType;
-    firstInput.id = formArray[i].id;
-    firstInput.onkeyup = formArray[i].onkeyup;
-    firstInput.errorId = formArray[i].errorId;
+      let firstInput = document.createElement("input");
 
-    table00.appendChild(firstInput);
+      firstInput.setAttribute("label", formArray[i].label);
+      firstInput.setAttribute("type", formArray[i].inputType);
+      firstInput.setAttribute("id", formArray[i].id);
+      firstInput.setAttribute("onkeyup", formArray[i].onkeyup);
+      firstInput.setAttribute("errorId", formArray[i].errorId);
+
+      let tr = document.createElement("tr");
+      //tr.appendChild(formArray[i].label);
+      tr.appendChild(firstInput);
+      table00.appendChild(tr);
   }
 
   
