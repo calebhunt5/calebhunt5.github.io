@@ -168,7 +168,7 @@ let person = {
   table00.setAttribute("style", "border: 1px solid black;")
   table00.setAttribute("width", "100%")
 
-  for(let i = 0; i < formArray.length - 1; i++)
+  for(let i = 0; i < formArray.length; i++)
   {
     let firstInput = document.createElement("input");
     firstInput.label = formArray[i].label;
