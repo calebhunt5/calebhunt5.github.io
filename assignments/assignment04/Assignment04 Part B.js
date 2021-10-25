@@ -166,7 +166,7 @@ let person = {
   // Step 3. loop through the JS object array to populate the form
   
   table00.setAttribute("style", "border: 1px solid black;")
-  table00.setAttribute("width", "100%")
+  table00.setAttribute("width", "25%")
 
    for(let i = 0 ; i < formArray.length ; i++)
   {
