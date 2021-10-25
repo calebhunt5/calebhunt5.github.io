@@ -186,7 +186,7 @@ let person = {
       td2.innerHTML = firstInput;
       
       tr.appendChild(td1);
-      tr.appendChild(td2);
+      tr.appendChild(firstInput);
       table00.appendChild(tr);
   }
 
