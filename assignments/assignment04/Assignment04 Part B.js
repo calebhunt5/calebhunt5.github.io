@@ -165,10 +165,22 @@ let person = {
   
   // Step 3. loop through the JS object array to populate the form
   
-  for(let i = 0; i < formArray.length; i++)
+  table00.setAttribute("style", "border: 1px solid black;")
+  table00.setAttribute("width", "100%")
+
+  for(let i = 0; i < formArray.length - 1; i++)
   {
-    
+    let firstInput = document.createElement("input");
+    firstInput.label = formArray[i].label;
+    firstInput.type = formArray[i].inputType;
+    firstInput.id = formArray[i].id;
+    firstInput.onkeyup = formArray[i].onkeyup;
+    firstInput.errorId = formArray[i].errorId;
+
+    table00.appendChild(firstInput);
   }
+
+  
   
   // append to tableobj a 3-column table row 
   function appendTableRow3 (tableobj, col1, col2, col3) {
