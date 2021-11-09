@@ -108,7 +108,7 @@ function loadContent() {
         = newConfirmedOver1000.map( 
           (x) => x.NewDeaths );
       chartData.options.title.text 
-        = "Covid 19 Hotspots" ;
+        = dayjs().format("[Covid Hotspots On] MM/DD/YYYY");
       myChart = new Chart(ctx, chartData); 
 
     } // end if
@@ -232,8 +232,9 @@ var newArray = []
 for (let i=0; i<covidJsObj.Countries.length; i++) {
   newArray.push({
     "Slug": "\"" + covidJsObj.Countries[i].Slug + "\"",
-    "TotalConfirmed": covidJsObj.Countries[i].TotalConfirmed
-    // continue here...
+    "TotalConfirmed": covidJsObj.Countries[i].TotalConfirmed + "\"",
+    //"TotalDeaths": covidJsObj.Countries[i].TotalDeaths + "\"",
+    //"Population": populations["covidJsObj.Countries[i].Slug"] + "\"", //This line might cause a bug I'm not sure yet ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    //"TotalConfirmedPer100000": (TotalConfirmed / Population) * 100000
   })
-  
 }
