@@ -7,6 +7,7 @@ var URL = "https://api.covid19api.com/summary";
 var covidJson;
 var covidJsObj;
 var newConfirmedOver1000;
+var newArray = []
 
 // AJAX variable
 var xhttp;
@@ -111,8 +112,23 @@ function loadContent() {
         = dayjs().format("[Covid Hotspots On] MM/DD/YYYY");
       myChart = new Chart(ctx, chartData); 
 
+      for (let i=0; i<covidJsObj.Countries.length; i++) {
+        newArray.push({
+          "Slug": "\"" + covidJsObj.Countries[i].Slug + "\"",
+          "TotalConfirmed": covidJsObj.Countries[i].TotalConfirmed + "\"",
+          "TotalDeaths": covidJsObj.Countries[i].TotalDeaths + "\"",
+          //"Population": populations["covidJsObj.Countries[i].Slug"] + "\"", //This line might cause a bug I'm not sure yet ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          //"TotalConfirmedPer100000": (TotalConfirmed / Population) * 100000
+        })
+      }
+      
+      console.log(newArray);
+
     } // end if
-    
+
+      
+
+     
   }; // end xhttp.onreadystatechange = function()
   
   xhttp.open("GET", URL, true);
@@ -228,13 +244,32 @@ var populations = {
 // new array 
 // loop through all covidJsObj.Countries[i] 
 // push all info i need
-var newArray = [] 
-for (let i=0; i<covidJsObj.Countries.length; i++) {
+/*var newArray = [] 
+
+newArray.push({
+  "Slug": covidJsObj.Countries[0].Slug,
+  "TotalConfirmed": covidJsObj.Countries[0].TotalConfirmed
+});*/
+
+var popArray = []
+for([p,v] of Object.entries(populations))
+{
+  popArray.push([p, v])
+}
+
+/*for (let i=0; i<covidJsObj.Countries.length; i++) {
   newArray.push({
     "Slug": "\"" + covidJsObj.Countries[i].Slug + "\"",
     "TotalConfirmed": covidJsObj.Countries[i].TotalConfirmed + "\"",
-    //"TotalDeaths": covidJsObj.Countries[i].TotalDeaths + "\"",
-    //"Population": populations["covidJsObj.Countries[i].Slug"] + "\"", //This line might cause a bug I'm not sure yet ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    //"TotalConfirmedPer100000": (TotalConfirmed / Population) * 100000
+    "TotalDeaths": covidJsObj.Countries[i].TotalDeaths + "\"",
+    "Population": populations["covidJsObj.Countries[i].Slug"] + "\"", //This line might cause a bug I'm not sure yet ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    "TotalConfirmedPer100000": (TotalConfirmed / Population) * 100000
   })
-}
+}*/
+
+
+
+
+
+
+
