@@ -32,6 +32,10 @@ var chartData = {
       label: 'oranges',
       data: [2, 29, 5, 5, 2, 3, 10],
       backgroundColor: "rgba(255,140,0,0.4)"
+    }, {
+      label: 'bananas',
+      data: [1, 1, 1, 1, 1, 1, 1],
+      backgroundColor: "rgba(255, 0, 140, 0.4"
     }]
   },
   options: {
@@ -205,21 +209,33 @@ function loadContent() {
         = "rgba(100,100,100,0.4)"; // gray
       chartData.data.datasets[1].backgroundColor 
         = "rgba(255,0,0,0.4)"; // red
+      chartData.data.datasets[2].backgroundColor
+        = "rgba(100,150,150,0.4)"
+      
       chartData.data.datasets[0].label  
-        = 'new cases';
+        = 'Total Confirmed';
       chartData.data.datasets[1].label  
-        = 'new deaths';
-      chartData.data.labels  
-        = newConfirmedOver1000.map( (x) => x.Slug );
+        = 'Total Deaths';
+      chartData.data.datasets[2].label
+        = 'TotalConfirmedPer100000';
+
+      /*//set individual bar labels (sets of three for confirmed, deaths, and per100000)
+      chartData.data.labels = newArray.map( (x) => x.Slug );
+      //give bars their data
       chartData.data.datasets[0].data  
-        = newConfirmedOver1000.map( 
-          (x) => x.NewConfirmed );
+        = newArray.map( 
+          (x) => x.TotalConfirmed );
       chartData.data.datasets[1].data  
-        = newConfirmedOver1000.map( 
-          (x) => x.NewDeaths );
+        = newArray.map( 
+          (x) => x.TotalDeaths );
+      chartData.data.datasets[2].data
+          = newArray.map(
+            (x) => x.TotalConfirmedPer100000);
+      
+
       chartData.options.title.text 
         = dayjs().format("[Covid Hotspots On] MM/DD/YYYY");
-      myChart = new Chart(ctx, chartData); 
+      myChart = new Chart(ctx, chartData); */
 
       for (let i=0; i<covidJsObj.Countries.length; i++) {
 
@@ -228,9 +244,9 @@ function loadContent() {
           if(covidJsObj.Countries[i].Slug === popArray[j][0])
           {
             newArray.push({
-              "Slug":  "\"" + covidJsObj.Countries[i].Slug + "\"",
-              "TotalConfirmed": covidJsObj.Countries[i].TotalConfirmed + "\"",
-              "TotalDeaths": covidJsObj.Countries[i].TotalDeaths + "\"",
+              "Slug":  covidJsObj.Countries[i].Slug,
+              "TotalConfirmed": covidJsObj.Countries[i].TotalConfirmed,
+              "TotalDeaths": covidJsObj.Countries[i].TotalDeaths,
               "Population": popArray[j][1],
               "TotalConfirmedPer100000": (covidJsObj.Countries[i].TotalConfirmed / popArray[j][1]) * 100000
             })
@@ -238,11 +254,31 @@ function loadContent() {
         }
       }
 
-      //console.log(_.orderBy(newArray, "TotalConfirmedPer100000", desc));
       newArray = _.orderBy(newArray, "TotalConfirmedPer100000");
       newArray = _.reverse(newArray);
 
       console.log(newArray);
+
+      newArray = newArray.filter(x => x.TotalDeaths >= 50000);
+
+      console.log(newArray);
+      
+      //set individual bar labels (sets of three for confirmed, deaths, and per100000)
+      chartData.data.labels = newArray.map( (x) => x.Slug );
+      //give bars their data
+      chartData.data.datasets[0].data  
+        = newArray.map( 
+          (x) => x.TotalConfirmed );
+      chartData.data.datasets[1].data  
+        = newArray.map( 
+          (x) => x.TotalDeaths );
+      chartData.data.datasets[2].data
+          = newArray.map(
+            (x) => x.TotalConfirmedPer100000);
+
+      chartData.options.title.text 
+        = dayjs().format("[Covid Hotspots On] MM/DD/YYYY");
+      myChart = new Chart(ctx, chartData);
 
     } // end if
   }; // end xhttp.onreadystatechange = function()
