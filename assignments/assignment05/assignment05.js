@@ -50,10 +50,7 @@ var chartData = {
           // logarithmic scale ignores maxTicksLimit
           maxTicksLimit: 11,
           callback: function(label, index, labels) {
-            return (   label/1000 > 9 
-                    || label/1000 == 1 
-                    || label/1000 == 0.1 
-                    || label/1000 == 0.01) 
+            return (Number.isInteger(Math.log10(label)))//if label is a whole number when log base 10, then it is a power of ten and we return the label
               ? label/1000+'k' :  "";
           }
         },
@@ -349,7 +346,6 @@ for([p,v] of Object.entries(populations))
       
       xhttp.open("GET", URL, true);
       xhttp.send();
-      
     } // end function loadContent() 
   
 
