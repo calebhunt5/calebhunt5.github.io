@@ -1,22 +1,50 @@
-<h2>Example Chart using Chart.js</h2>
-<canvas id="myChart"></canvas>
+<!DOCTYPE html>
 
-<h2>Example AJAX call to Covid19api</h2>
-<button type="button" onclick="loadContent()">Load Covid-19 Content</button>
+<html lang='en'>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  </head>
 
-<!-- Custom js -->
-<script src = "assignment05.js"></script>
+  <body>
+    <div class = "container">
+      <div class = "row">
+        <div class = "col-md-9">
+          <h2>Example Chart using Chart.js</h2>
+          <canvas id="myChart"></canvas>
 
-<!-- ChartJS: https://www.chartjs.org/ -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+          <h2>Example AJAX call to Covid19api</h2>
+          <button type="button" onclick="loadContent()">Load Covid-19 Content</button>
+        </div>
 
-<!-- Lodash: https://lodash.com/ -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+        <div class = "col-md-3">
+          <p>Put the chart inside a Bootstrap DIV. Add a second DIV so the second DIV appears to the right of the chart if the screen is medium-sized or bigger, otherwise the second DIV appears below the chart. The second DIV can be something simple, like a paragraph of text, as shown below. Your result should look something like the image below.</p>
+        </div>
+      </div>
+    </div>
 
-<!-- Day.js: https://day.js.org/docs/en/installation/browser -->
-<script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
-<script>
-  dayjs().format();
-  console.log(dayjs().format("YYYY-MM-DD"));
 
-</script>
+    
+  </body>
+
+
+
+
+  <!-- Custom js -->
+  <script src = "assignment05.js"></script>
+
+  <!-- ChartJS: https://www.chartjs.org/ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+
+  <!-- Lodash: https://lodash.com/ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.20/lodash.min.js"></script>
+
+  <!-- Day.js: https://day.js.org/docs/en/installation/browser -->
+  <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+  <script>
+    dayjs().format();
+    console.log(dayjs().format("YYYY-MM-DD"));
+
+    
+  </script>
+</html>
+
